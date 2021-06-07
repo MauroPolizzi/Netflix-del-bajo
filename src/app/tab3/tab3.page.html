@@ -1,0 +1,41 @@
+<ion-header>
+    <ion-toolbar color="dark">
+        <ion-title>
+            Favoritos
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content color="dark">
+    <ion-slides class="animated fadeIn" *ngIf="serviceLocal.peliculasFavoritas.length === 0">
+        <ion-slide>
+            <ion-label>No hay peliculas guardadas!</ion-label>
+            <ion-icon slot="start" name="heart-dislike-outline"></ion-icon>
+        </ion-slide>
+    </ion-slides>
+
+    <!-- <div *ngFor="let item of favoritoGenero">
+
+        <ion-grid fixed *ngIf="item.pelis.length > 0">
+            <ion-row>
+                <ion-col size="6">
+                    <h3 class="title-genre">{{ item.genero }}</h3>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+        
+    </div> -->
+    <!-- <app-slideshow-poster [peliculas]="item.pelis"></app-slideshow-poster> -->
+
+    <ion-grid class="animated fadeIn" fixed>
+        <ion-row>
+            <ion-col *ngFor="let item of serviceLocal.peliculasFavoritas" size="6">
+                <ion-card (click)="verDetalle( item.id)" color="dark">
+                    <img [src]="item.poster_path | imagen">
+                    <ion-card-subtitle>{{ item.release_date }}</ion-card-subtitle>
+                    <ion-card-title>{{ item.title }}</ion-card-title>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>

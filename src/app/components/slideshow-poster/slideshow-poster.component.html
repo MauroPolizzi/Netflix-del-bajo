@@ -1,0 +1,7 @@
+<ion-slides class="animated fadeIn" [options]="slidesOpts">
+    <ion-slide *ngFor="let item of peliculas">
+        <ion-card (click)="verDetalle( item.id )">
+            <img class="poster_path" [src]="item.poster_path | imagen">
+        </ion-card>
+    </ion-slide>
+</ion-slides>
